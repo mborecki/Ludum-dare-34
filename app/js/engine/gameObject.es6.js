@@ -55,6 +55,8 @@ class GameObject {
             default:
                 console.warn(`Unknow component type: ${component.type}`);
         }
+
+        component.object = this;
     }
 
     addRenderer (renderer) {
