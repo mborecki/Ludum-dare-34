@@ -9,14 +9,15 @@ let canvas = null;
 // let window.performance.now = window.performance.now
 
 class Engine {
-    constructor () {
-        console.log('Engine.constructor');
-        this.gameRenderer = new GameRenderer(this.canvas);
+    constructor (c) {
+        this.gameRenderer = new GameRenderer();
     }
 
     start() {
         console.log('ENGINE: start')
         fpsDisplay = window.document.getElementById('fps');
+
+        this.gameRenderer.canvas = this.canvas;
 
 
         this.lastUpdate = window.performance.now();

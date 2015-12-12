@@ -1,6 +1,5 @@
 class GameRenderer {
     constructor (c) {
-        this.canvas = c;
         this.objects = [];
     }
 
@@ -15,8 +14,23 @@ class GameRenderer {
                 continue;
             }
 
-            this.objects[i].draw();
+            this.objects[i].draw(this.bufferCtx);
         }
+
+        this.ctx.drawImage(this.buffer, 0, 0);
+    }
+
+    set canvas(c) {
+        this.ctx = c.getContext('2d');
+
+        let buffer = document.createElement('canvas');
+        buffer.width = canvas.width;
+        buffer.height = canvas.height;
+
+        this.buffer = buffer;
+        this.bufferCtx = buffer.getContext('2d');
+
+        console.log('set canvas', this)
     }
 }
 
