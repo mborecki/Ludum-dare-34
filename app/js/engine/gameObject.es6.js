@@ -32,7 +32,7 @@ class GameObject {
         return [this.x, this.y];
     }
 
-    constructor (params) {
+    constructor (params = {}) {
         this._ = {};
         this._.needUpdate = false;
 

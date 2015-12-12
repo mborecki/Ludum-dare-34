@@ -1,6 +1,7 @@
 import Engine from './../engine/engine.es6';
 
-import TestObject from './testObject.es6';
+import TestObject from './objects/testObject.es6';
+import TestObject2 from './objects/testObject_2.es6';
 
 class Game {
     constructor (cfg) {
@@ -9,12 +10,33 @@ class Game {
         Engine.canvas = this.canvas;
 
         Engine.ObjectFactory.register('test', TestObject);
-        // Engine.ObjectFactory.register('test', TestObject);
+        Engine.ObjectFactory.register('test2', TestObject2);
 
-        let test = Engine.ObjectFactory.spawn('test');
-        let test2 = Engine.ObjectFactory.spawn('test', {
+        let test = Engine.ObjectFactory.spawn('test', {
             x: 155,
-            y: 110
+            y: 0
+        });
+        let test_2 = Engine.ObjectFactory.spawn('test', {
+            x: 0,
+            y: 75
+        });
+
+        let test_3 = Engine.ObjectFactory.spawn('test', {
+            x: 155 - 25,
+            y: 75 - 25,
+            size: 3
+        });
+
+        let test_4 = Engine.ObjectFactory.spawn('test', {
+            x: 155 + 25,
+            y: 75 + 25,
+            size: 3
+        });
+
+        let test2 = Engine.ObjectFactory.spawn('test2', {
+            x: 155,
+            y: 75,
+            size: 50
         });
 
         Engine.Input.bindAction('button_1', Engine.Input.TYPE.A, Engine.Input.TYPE.LEFT);
