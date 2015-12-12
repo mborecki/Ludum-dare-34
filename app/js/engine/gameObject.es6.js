@@ -1,3 +1,5 @@
+import {TYPE as COMPONENT_TYPE_RENDERER} from './renderers/abstractRenderer.es6';
+import Engine from './engine.es6';
 
 class GameObject {
 
@@ -17,6 +19,10 @@ class GameObject {
         this._.y = y;
     }
 
+    get isDrawable() {
+        return !this.destroyed && typeof this.draw === "function";
+    }
+
     constructor () {
         this._ = {};
     }
@@ -32,10 +38,28 @@ class GameObject {
 
     create () {
         this.destroyed = false;
+        Engine.addObject(this);
+        return this;
     }
 
     update () {
         return this;
+    }
+
+    addComponent (component) {
+        switch (component.type) {
+            case COMPONENT_TYPE_RENDERER:
+                this.addRenderer(component);
+                break;
+
+            default:
+                console.warn(`Unknow component type: ${component.type}`);
+        }
+    }
+
+    addRenderer (renderer) {
+        this.draw = renderer.draw;
+        this.renderer = renderer;
     }
 }
 

@@ -7,12 +7,13 @@ class Game {
         this.canvas = cfg.canvas;
 
         Engine.canvas = this.canvas;
-        Engine.start();
 
         Engine.ObjectFactory.register('test', TestObject);
         // Engine.ObjectFactory.register('test', TestObject);
 
-        Engine.ObjectFactory.spawn('test');
+        let test = Engine.ObjectFactory.spawn('test');
+
+        Engine.start();
     }
 }
 

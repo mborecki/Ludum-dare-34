@@ -10,6 +10,7 @@ let canvas = null;
 
 class Engine {
     start() {
+        console.log('ENGINE: start')
         fpsDisplay = window.document.getElementById('fps');
 
         this.lastUpdate = window.performance.now();
@@ -51,6 +52,10 @@ class Engine {
      * @private
      */
     draw() {
+
+    }
+
+    addObject (object) {
 
     }
 
