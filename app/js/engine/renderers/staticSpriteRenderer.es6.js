@@ -22,16 +22,15 @@ class StaticSpriteRender extends AbstractRenderer {
         let size = this.size;
         let halfSize = this.size / 2;
 
-        let v1 = Vector2d.add(objLocation, this.position, Vector2d.rotate([halfSize, halfSize], this.rotation));
-        let v2 = Vector2d.add(objLocation, this.position, Vector2d.rotate([-halfSize, halfSize], this.rotation));
-        let v3 = Vector2d.add(objLocation, this.position, Vector2d.rotate([-halfSize, -halfSize], this.rotation));
-        let v4 = Vector2d.add(objLocation, this.position, Vector2d.rotate([halfSize, -halfSize], this.rotation));
+        let v = Vector2d.add(objLocation, this.position);
 
         // debugger;
 
-        console.log(this.image, v3[0], v3[1], size, size)
-
-        ctx.drawImage(this.image, v3[0], v3[1], size, size);
+        ctx.save();
+        ctx.translate(v[0], v[1]);
+        ctx.rotate(this.rotation);
+        ctx.drawImage(this.image, -halfSize, -halfSize, size, size);
+        ctx.restore();
     }
 
     rotate(rad) {

@@ -20,7 +20,7 @@ class TestObject extends GameObject {
             image: 'TestObjectStaticSprite'
         }));
 
-        // this.addComponent(new Rotate());
+        this.addComponent(new Rotate());
         this.addComponent(new Move());
     }
 }
