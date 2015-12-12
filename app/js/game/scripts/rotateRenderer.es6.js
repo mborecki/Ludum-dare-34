@@ -11,11 +11,13 @@ class RotateRenderer extends Script {
 
         if (Input.down('button_1')) {
             this.object.renderer.color = '#0ff';
+            this.speed = Math.abs(this.speed);
         }
 
 
         if (Input.down('button_2')) {
             this.object.renderer.color = '#ff0';
+            this.speed = -Math.abs(this.speed);
         }
     }
 }
