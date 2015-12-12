@@ -12,6 +12,10 @@ class AbstractRenderer extends Component {
     draw() {
 
     }
+
+    setParam(name, value) {
+        this[name] = value
+    }
 }
 
 export default AbstractRenderer;

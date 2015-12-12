@@ -23,6 +23,10 @@ class GameObject {
         return !this.destroyed && typeof this.draw === "function";
     }
 
+    get location() {
+        return [this.x, this.y];
+    }
+
     constructor (params) {
         this._ = {};
         this.reset();
@@ -44,7 +48,10 @@ class GameObject {
         return this;
     }
 
-    update () {
+    update (params = {}) {
+        this.x = params.x || 0;
+        this.y = params.y || 0;
+
         return this;
     }
 
@@ -62,7 +69,7 @@ class GameObject {
     }
 
     addRenderer (renderer) {
-        this.draw = (ctx) => renderer.draw(ctx);
+        this.draw = (ctx) => renderer.draw(ctx, this.location);
         this.renderer = renderer;
     }
 }

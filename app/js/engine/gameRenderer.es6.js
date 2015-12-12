@@ -30,7 +30,7 @@ class GameRenderer {
         this.buffer = buffer;
         this.bufferCtx = buffer.getContext('2d');
 
-        console.log('set canvas', this)
+        console.log('set canvas', this);
     }
 }
 

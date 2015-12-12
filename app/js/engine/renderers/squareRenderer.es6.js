@@ -8,9 +8,9 @@ class SquareRenderer extends AbstractRenderer {
         this.size = params.size || 100;
     }
 
-    draw (ctx) {
+    draw (ctx, location) {
         ctx.fillStyle = this.color;
-        ctx.fillRect(0, 0, this.size, this.size);
+        ctx.fillRect(0 + location[0], 0 + location[1], this.size + location[0], this.size + location[1]);
     }
 }
 

@@ -34,7 +34,7 @@ class ObjectFactory {
         };
     }
 
-    spawn (typeName, params) {
+    spawn (typeName, params = {}) {
         let type = this.types[typeName];
         let o = null;
 
