@@ -17,6 +17,9 @@ class Game {
             y: 110
         });
 
+        Engine.Input.bindAction('button_1', Engine.Input.TYPE.A, Engine.Input.TYPE.LEFT);
+        Engine.Input.bindAction('button_2', Engine.Input.TYPE.W, Engine.Input.TYPE.RIGHT);
+
         test.renderer.setParam('color', '#0f0');
         test2.renderer.setParam('color', '#00f');
 

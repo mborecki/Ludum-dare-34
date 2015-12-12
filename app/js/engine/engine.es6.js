@@ -1,5 +1,6 @@
 import ObjectFactory from './objectFactory.es6';
 import GameRenderer from './gameRenderer.es6';
+import Input from './input.es6';
 
 let EngineSingleton = null;
 
@@ -12,6 +13,7 @@ class Engine {
     constructor (c) {
         this.gameRenderer = new GameRenderer();
         this.objects = [];
+        this.Input = Input;
 
         this.t = 0;
     }
