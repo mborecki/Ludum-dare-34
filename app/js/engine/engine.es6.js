@@ -1,5 +1,5 @@
 import ObjectFactory from './objectFactory.es6';
-
+import GameRenderer from './gameRenderer.es6';
 
 let EngineSingleton = null;
 
@@ -9,9 +9,15 @@ let canvas = null;
 // let window.performance.now = window.performance.now
 
 class Engine {
+    constructor () {
+        console.log('Engine.constructor');
+        this.gameRenderer = new GameRenderer(this.canvas);
+    }
+
     start() {
         console.log('ENGINE: start')
         fpsDisplay = window.document.getElementById('fps');
+
 
         this.lastUpdate = window.performance.now();
         this.started = true;
@@ -52,11 +58,13 @@ class Engine {
      * @private
      */
     draw() {
-
+        this.gameRenderer.draw()
     }
 
     addObject (object) {
-
+        if (object.isDrawable) {
+            this.gameRenderer.add(object);
+        }
     }
 
     set canvas(c) {
@@ -76,5 +84,7 @@ class Engine {
 if (!EngineSingleton) {
     EngineSingleton = new Engine();
 }
+
+console.log(EngineSingleton);
 
 export default EngineSingleton;

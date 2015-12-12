@@ -58,7 +58,7 @@ class GameObject {
     }
 
     addRenderer (renderer) {
-        this.draw = renderer.draw;
+        this.draw = () => renderer.draw();
         this.renderer = renderer;
     }
 }
