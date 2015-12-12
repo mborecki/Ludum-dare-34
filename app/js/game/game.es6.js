@@ -41,6 +41,20 @@ class Game {
             layer: -10
         });
 
+        Engine.Images.register('Background', {
+            origin: [0, 0],
+            size: [800, 400],
+            url: 'assets/images/bg.png'
+        })
+
+        let bg = Engine.ObjectFactory.spawn('EStaticImageObject', {
+            x: 0,
+            y: 0,
+            w: 800,
+            h: 400,
+            image: 'Background'
+        })
+
         Engine.Input.bindAction('button_1', Engine.Input.TYPE.A, Engine.Input.TYPE.LEFT);
         Engine.Input.bindAction('button_2', Engine.Input.TYPE.W, Engine.Input.TYPE.RIGHT);
 

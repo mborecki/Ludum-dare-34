@@ -1,6 +1,9 @@
 import ObjectFactory from './objectFactory.es6';
 import GameRenderer from './gameRenderer.es6';
+import Images from './images.es6';
 import Input from './input.es6';
+
+import EStaticImageObject from './objects/staticImageObject';
 
 let EngineSingleton = null;
 
@@ -13,9 +16,8 @@ class Engine {
     constructor (c) {
         this.gameRenderer = new GameRenderer();
         this.objects = [];
-        this.Input = Input;
 
-        this.t = 0;
+        this.initBuildInObjects();
     }
 
     start() {
@@ -95,6 +97,18 @@ class Engine {
 
     get ObjectFactory() {
         return ObjectFactory;
+    }
+
+    get Images() {
+        return Images;
+    }
+
+    get Input() {
+        return Input;
+    }
+
+    initBuildInObjects() {
+        this.ObjectFactory.register('EStaticImageObject', EStaticImageObject)
     }
 }
 
