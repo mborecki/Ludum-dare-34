@@ -1,3 +1,5 @@
+import ObjectFactory from './objectFactory.es6';
+
 
 let EngineSingleton = null;
 
@@ -39,7 +41,7 @@ class Engine {
      */
     update(deltaTime) {
         this.lastUpdate = window.performance.now();
-        
+
         if (fpsDisplay) {
             fpsDisplay.innerHTML = Math.floor(1000 / deltaTime)
         }
@@ -58,6 +60,10 @@ class Engine {
 
     get canvas() {
         return canvas;
+    }
+
+    get ObjectFactory() {
+        return ObjectFactory;
     }
 }
 

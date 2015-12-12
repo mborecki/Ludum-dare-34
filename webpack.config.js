@@ -1,6 +1,6 @@
 module.exports = {
     resolve: {
-        root: __dirname + 'app/',
+        root: __dirname + '/app/',
         extensions: ['.es6.js', '.js', '']
     },
 
