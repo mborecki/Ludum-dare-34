@@ -11,6 +11,9 @@ let canvas = null;
 class Engine {
     constructor (c) {
         this.gameRenderer = new GameRenderer();
+        this.objects = [];
+
+        this.t = 0;
     }
 
     start() {
@@ -50,8 +53,18 @@ class Engine {
     update(deltaTime) {
         this.lastUpdate = window.performance.now();
 
+        // DEV!
         if (fpsDisplay) {
             fpsDisplay.innerHTML = Math.floor(1000 / deltaTime)
+        }
+
+        let oCount = this.objects.length;
+
+        for (var i = 0; i < oCount; i++) {
+            let o = this.objects[i];
+            if (!o.destroyed && o.isUpdateable) {
+                o.update(deltaTime);
+            }
         }
     }
 
@@ -66,6 +79,8 @@ class Engine {
         if (object.isDrawable) {
             this.gameRenderer.add(object);
         }
+
+        this.objects.push(object);
     }
 
     set canvas(c) {

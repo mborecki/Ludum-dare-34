@@ -50,7 +50,7 @@ class ObjectFactory {
             if (type.pool !== null) type.pool.push(o);
         }
 
-        return o.update(params).create();
+        return o.updateParams(params).create();
     }
 }
 
