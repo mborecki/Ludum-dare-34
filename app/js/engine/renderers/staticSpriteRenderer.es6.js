@@ -28,7 +28,7 @@ class StaticSpriteRender extends AbstractRenderer {
 
         ctx.save();
         ctx.translate(v[0], v[1]);
-        ctx.rotate(this.rotation);
+        ctx.rotate(-this.rotation);
         ctx.drawImage(this.image, -halfSize, -halfSize, size, size);
         ctx.restore();
     }

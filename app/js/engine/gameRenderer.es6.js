@@ -5,6 +5,9 @@ class GameRenderer {
 
     add(object) {
         this.objects.push(object);
+        this.objects.sort((a, b) => {
+            return a.layer - b.layer;
+        });
     }
 
     draw() {

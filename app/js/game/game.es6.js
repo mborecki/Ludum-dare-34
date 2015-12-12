@@ -34,9 +34,11 @@ class Game {
         });
 
         let test2 = Engine.ObjectFactory.spawn('test2', {
-            x: 155,
+            x: 20,
             y: 75,
             size: 50
+        }, {
+            layer: -10
         });
 
         Engine.Input.bindAction('button_1', Engine.Input.TYPE.A, Engine.Input.TYPE.LEFT);

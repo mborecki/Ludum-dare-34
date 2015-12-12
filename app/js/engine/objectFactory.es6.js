@@ -34,7 +34,7 @@ class ObjectFactory {
         };
     }
 
-    spawn (typeName, params = {}) {
+    spawn (typeName, params = {}, config = {}) {
         let type = this.types[typeName];
         let o = null;
 
@@ -49,6 +49,8 @@ class ObjectFactory {
             o = new type.const();
             if (type.pool !== null) type.pool.push(o);
         }
+
+        o.layer = config.layer || 0;
 
         return o.updateParams(params).create();
     }
