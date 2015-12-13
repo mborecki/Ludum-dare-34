@@ -14,7 +14,8 @@ class GameRenderer {
         this.objects.splice(i, 1);
     }
 
-    draw() {
+    draw(callback) {
+        // if (window.test) console.log('draw');
         this.bufferCtx.clearRect(0, 0, this.width, this.height );
         for(let i=0; i < this.objects.length; i++) {
             if (this.objects[i].destroyed) {
@@ -25,8 +26,17 @@ class GameRenderer {
             this.objects[i].draw(this.bufferCtx);
         }
 
+
+
         this.ctx.clearRect(0, 0, this.width, this.height );
         this.ctx.drawImage(this.buffer, 0, 0);
+
+        // if (window.test && this.bufferCtx.getImageData(110, 530, 1, 1).data[0] !== 255) {
+        //     debugger;
+        // }
+
+        callback();
+        // if (window.test) console.log('draw end');
     }
 
     set canvas(c) {

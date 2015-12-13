@@ -9,6 +9,7 @@ class StaticSpriteRender extends AbstractRenderer {
     constructor(params = {}) {
         super(params);
 
+        this.imageName = params.image;
         this.image = Images.getImage(params.image || '')
 
         if (typeof params.size === "number") {
@@ -25,6 +26,8 @@ class StaticSpriteRender extends AbstractRenderer {
 
     draw (ctx, objLocation) {
         if (!this.image) return;
+
+        // if (this.imageName === 'PlayerCar') console.info('PlayerDraw');
 
         let halfSize = this.halfSize;
         let size = this.size;
@@ -44,6 +47,7 @@ class StaticSpriteRender extends AbstractRenderer {
     }
 
     loadImage (name) {
+        this.imageName = name;
         this.image = Images.getImage(name || '')
     }
 

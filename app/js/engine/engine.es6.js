@@ -49,7 +49,11 @@ class Engine {
         let deltaTime = now - this.lastUpdate;
 
         this.update(deltaTime);
-        this.draw();
+        if (!this.drawing) {
+            this.draw();
+        } else {
+            console.warn('ZA WOLNO RYSUJESZ!');
+        }
     }
 
     /**
@@ -81,10 +85,14 @@ class Engine {
      * @private
      */
     draw() {
-        this.gameRenderer.draw()
+        this.drawing = true
+        this.gameRenderer.draw(() => {
+            this.drawing = false
+        })
     }
 
     addObject (object) {
+        console.log('addObject', object)
         if (object.isDrawable) {
             this.gameRenderer.add(object);
         }

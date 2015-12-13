@@ -13,7 +13,7 @@ class Level1 extends Level {
         this.maxSpeed = CFG.MAX_SPEED;
 
         this.playerYpos = 530;
-        this.playerXpos = [110];
+        this.playerXpos = [110, 185, 260, 335, 410, 485];
         this.playerPosIndex = 0
     }
 
@@ -31,8 +31,9 @@ class Level1 extends Level {
 
         this.road = Engine.ObjectFactory.spawn('Road');
         this.player = Engine.ObjectFactory.spawn('Player', {
-            x: this.playerXpos[this.playerPosIndex],
-            y: this.playerYpos
+            y: 530,
+            positions: this.playerXpos,
+            roadPosition: 3
         }, {
             layer: 100
         });
@@ -43,8 +44,14 @@ class Level1 extends Level {
 
         super.update(dt);
 
+        if (Engine.Input.down('button_3')) {
+            this.road.speed = 0;
+            this.acc = 0;
+        }
+
         if (this.road.speed < this.maxSpeed) {
-            this.road.speed += this.acc * (dt / 1000)
+            this.road.speed += this.acc * (dt / 1000);
+            this.player.speed = this.road.speed;
         }
     }
 }

@@ -52,7 +52,7 @@ class ObjectFactory {
 
         o.layer = config.layer || 0;
 
-        return o.updateParams(params).create();
+        return o.updateParams(params).create(!!config.dontAddToEngine);
     }
 }
 

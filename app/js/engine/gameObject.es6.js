@@ -52,9 +52,10 @@ class GameObject {
         this.destroyed = true;
     }
 
-    create () {
+    create (dontAddToEngine) {
+        // console.log('create', dontAddToEngine)
         this.destroyed = false;
-        Engine.addObject(this);
+        if (!dontAddToEngine) Engine.addObject(this);
 
         return this;
     }

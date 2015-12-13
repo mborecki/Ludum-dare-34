@@ -19,7 +19,8 @@ class Game {
 
     initKeyBindings () {
         Engine.Input.bindAction('button_1', Engine.Input.TYPE.A, Engine.Input.TYPE.LEFT);
-        Engine.Input.bindAction('button_2', Engine.Input.TYPE.W, Engine.Input.TYPE.RIGHT);
+        Engine.Input.bindAction('button_2', Engine.Input.TYPE.D, Engine.Input.TYPE.RIGHT);
+        Engine.Input.bindAction('button_3', Engine.Input.TYPE.S);
     }
 
     initImages () {

@@ -9,8 +9,8 @@ class RoadTile extends EStaticImageObject {
         super(params);
     }
 
-    create () {
-        super.create();
+    create (params = {}) {
+        super.create(params);
 
         this.updateParams({
             image: 'RoadTile',
@@ -26,8 +26,8 @@ class RoadTile2 extends EStaticImageObject {
         super(params);
     }
 
-    create () {
-        super.create();
+    create (params) {
+        super.create(params);
 
         this.updateParams({
             image: 'RoadTile2',
@@ -42,12 +42,16 @@ class Road extends GameObject {
     constructor () {
         super();
 
-        this.speed = 50 //[px/s]
+        this.speed = 1 //[px/s]
         this.positionY = 0;
-        this.tileStep = 148;
+        this.tileStep = 135;
 
         this.tiles = [];
         this.layer = 10;
+
+        this.buffer = document.createElement('canvas');
+        this.buffer.width = 600;
+        this.buffer.height = 600;
     }
 
     create() {
@@ -61,6 +65,18 @@ class Road extends GameObject {
         this.addTile('RoadTile2', 0 * this.tileStep);
         this.addTile('RoadTile', -1 * this.tileStep);
         this.addTile('RoadTile2', -2 * this.tileStep);
+        this.addTile('RoadTile2', -3 * this.tileStep);
+        this.addTile('RoadTile2', -4 * this.tileStep);
+        this.addTile('RoadTile2', -5 * this.tileStep);
+        this.addTile('RoadTile2', -6 * this.tileStep);
+        this.addTile('RoadTile2', -7 * this.tileStep);
+        this.addTile('RoadTile2', -8 * this.tileStep);
+        this.addTile('RoadTile2', -9 * this.tileStep);
+        this.addTile('RoadTile2', -10 * this.tileStep);
+        this.addTile('RoadTile2', -11* this.tileStep);
+        this.addTile('RoadTile2', -12* this.tileStep);
+        this.addTile('RoadTile2', -13* this.tileStep);
+        this.addTile('RoadTile2', -14* this.tileStep);
         this._.needUpdate = true;
 
         return this;
@@ -70,28 +86,41 @@ class Road extends GameObject {
     update(dT) {
         super.update(dT);
 
+
+
         let dS = this.speed * (dT / 1000);
         this.positionY += dS;
 
-        // console.log(dS , this.position);
 
         if (this.positionY > this.tileStep) {
             this.positionY -= this.tileStep;
 
-            this.addTile(this.getRandomTitleName(), (-2 * this.tileStep) + this.positionY);
+            this.addTile(this.getRandomTitleName(), (-14 * this.tileStep) + this.positionY);
 
             this.tiles.shift().destroy();
         }
 
         this.updateTiles(dS);
+
+        window.aaa = this;
     }
 
     updateTiles(dS) {
         for (let i = 0; i < this.tiles.length; i++) {
             this.tiles[i].y += dS;
-            // if (i > 0)
-            //     document.getElementById('t' + i).innerHTML = this.tiles[i].y - this.tiles[i-1].y;
         }
+    }
+
+    draw (ctx) {
+        // console.info('DrowRoad');
+        let bufferCtx = this.buffer.getContext("2d");
+        bufferCtx.clearRect(0,0,600,600);
+        for (let i = 0; i < this.tiles.length; i++) {
+            this.tiles[i].draw(bufferCtx)
+        }
+
+        ctx.drawImage(this.buffer,0 ,0, 600, 600)
+
     }
 
     addTile(nameType, pY) {
@@ -99,12 +128,9 @@ class Road extends GameObject {
             x: 0,
             y: pY
         }, {
-            layer: this.layer++
+            dontAddToEngine: true
         });
 
-        if (this.layer > 20) {
-            this.layer = 10;
-        }
         this.tiles.push(tile)
     }
 

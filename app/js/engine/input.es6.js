@@ -2,7 +2,8 @@ let singleton = null;
 
 export const KEY_MAP = {
     'A' : 65,
-    'W' : 68,
+    'D' : 68,
+    'S' : 83,
     'LEFT': 37,
     'RIGHT': 39
 }
