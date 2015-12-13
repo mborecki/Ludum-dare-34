@@ -16,6 +16,7 @@ class Engine {
     constructor (c) {
         this.gameRenderer = new GameRenderer();
         this.objects = [];
+        this.levels = {};
 
         this.initBuildInObjects();
     }
@@ -64,6 +65,10 @@ class Engine {
 
         let oCount = this.objects.length;
 
+        if (this.activeLevel) {
+            this.activeLevel.update();
+        }
+
         for (var i = 0; i < oCount; i++) {
             let o = this.objects[i];
             if (!o.destroyed && o.isUpdateable) {
@@ -85,6 +90,36 @@ class Engine {
         }
 
         this.objects.push(object);
+    }
+
+    addLevel (name, level) {
+        if (typeof this.levels[name] !== "undefined") {
+            console.warn(`Repeated level name ${name}`);
+        }
+
+        this.levels[name] = level;
+    }
+
+    runLevel (name) {
+        if (typeof this.levels[name] === "undefined") {
+            console.warn(`Level name unknow: ${name}`);
+        } else {
+            this.stopActiveLevel();
+            let level = this.levels[name];
+
+            this.activeLevel = level;
+            this.activeLevel.start();
+        }
+    }
+
+    stopActiveLevel() {
+        if (this.activeLevel) {
+            for(var i = 0; i < this.objects.length; i++) {
+                this.objects[i].destroy();
+            }
+        }
+
+        this.activeLevel = null;
     }
 
     set canvas(c) {
