@@ -10,7 +10,14 @@ class StaticSpriteRender extends AbstractRenderer {
         super(params);
 
         this.image = Images.getImage(params.image)
-        this.size = params.size || 100;
+
+        if (typeof params.size === "number") {
+            this.size = [params.size, params.size];
+        } else {
+            this.size = params.size || [100, 100];
+        }
+
+        this.halfSize = Vector2d.MultiplyNumber(this.size, 0.5);
 
         this.rotation = 0;
 
@@ -19,8 +26,8 @@ class StaticSpriteRender extends AbstractRenderer {
     }
 
     draw (ctx, objLocation) {
+        let halfSize = this.halfSize;
         let size = this.size;
-        let halfSize = this.size / 2;
 
         let v = Vector2d.add(objLocation, this.position);
 
@@ -29,7 +36,7 @@ class StaticSpriteRender extends AbstractRenderer {
         ctx.save();
         ctx.translate(v[0], v[1]);
         ctx.rotate(-this.rotation);
-        ctx.drawImage(this.image, -halfSize, -halfSize, size, size);
+        ctx.drawImage(this.image, -halfSize[0], -halfSize[1], size[0], size[1]);
         ctx.restore();
     }
 

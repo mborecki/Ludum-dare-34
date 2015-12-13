@@ -20,6 +20,10 @@ class Vector2d {
         }
         return [x,y];
     }
+
+    static MultiplyNumber(v, n) {
+        return [v[0]*n, v[1]*n];
+    }
 }
 
 export default Vector2d;
