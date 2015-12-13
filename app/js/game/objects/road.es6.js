@@ -87,10 +87,10 @@ class Road extends GameObject {
         super.update(dT);
 
 
-
         let dS = this.speed * (dT / 1000);
         this.positionY += dS;
 
+        // console.log(this.speed, dS)
 
         if (this.positionY > this.tileStep) {
             this.positionY -= this.tileStep;

@@ -15,17 +15,17 @@ class GameRenderer {
     }
 
     draw(callback) {
+        let toRemove = [];
         // if (window.test) console.log('draw');
         this.bufferCtx.clearRect(0, 0, this.width, this.height );
         for(let i=0; i < this.objects.length; i++) {
             if (this.objects[i].destroyed) {
-                this.remove(i);
+                toRemove.push(i);
                 continue;
             }
 
             this.objects[i].draw(this.bufferCtx);
         }
-
 
 
         this.ctx.clearRect(0, 0, this.width, this.height );
@@ -37,6 +37,11 @@ class GameRenderer {
 
         callback();
         // if (window.test) console.log('draw end');
+
+        for (let i = toRemove.length - 1; i >= 0; i--) {
+            this.remove(toRemove[i]);
+        }
+
     }
 
     set canvas(c) {

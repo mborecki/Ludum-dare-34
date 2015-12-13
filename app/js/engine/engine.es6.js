@@ -48,6 +48,12 @@ class Engine {
         let now = window.performance.now();
         let deltaTime = now - this.lastUpdate;
 
+        if (deltaTime > 2000) {
+            this.lastUpdate = window.performance.now();
+            console.log('>2000')
+            return;
+        }
+
         this.update(deltaTime);
         if (!this.drawing) {
             this.draw();
