@@ -52,6 +52,14 @@ class Input {
     down(name) {
         return !!this.actionState[name];
     }
+
+    clear() {
+        for(let i in this.actionState) {
+            if (this.actionState.hasOwnProperty(i)) {
+                this.actionState[i] = false;
+            }
+        }
+    }
 }
 
 if (!singleton) {

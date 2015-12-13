@@ -37,6 +37,8 @@ class Level1 extends Level {
         }, {
             layer: 100
         });
+
+        Engine.Input.clear();
     }
 
     update(dt) {
