@@ -10,11 +10,15 @@ class GameRenderer {
         });
     }
 
+    remove(i) {
+        this.objects.splice(i, 1);
+    }
+
     draw() {
         this.bufferCtx.clearRect(0, 0, this.width, this.height );
         for(let i=0; i < this.objects.length; i++) {
             if (this.objects[i].destroyed) {
-                remove(i);
+                this.remove(i);
                 continue;
             }
 

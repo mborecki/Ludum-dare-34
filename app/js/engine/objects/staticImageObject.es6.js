@@ -10,8 +10,6 @@ class EStaticImageObject extends GameObject {
     updateParams (params = {}) {
         super.updateParams(params);
 
-        console.log('updateParams', params)
-
         if (typeof params.size !== "undefined") {
             this.size = params.size
             this.renderer.size = this.size;

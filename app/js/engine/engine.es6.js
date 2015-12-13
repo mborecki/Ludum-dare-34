@@ -66,7 +66,7 @@ class Engine {
         let oCount = this.objects.length;
 
         if (this.activeLevel) {
-            this.activeLevel.update();
+            this.activeLevel.update(deltaTime);
         }
 
         for (var i = 0; i < oCount; i++) {

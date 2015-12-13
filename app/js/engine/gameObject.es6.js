@@ -55,6 +55,7 @@ class GameObject {
     create () {
         this.destroyed = false;
         Engine.addObject(this);
+
         return this;
     }
 
@@ -66,8 +67,8 @@ class GameObject {
     }
 
     updateParams (params = {}) {
-        this.x = params.x || 0;
-        this.y = params.y || 0;
+        this.x = (params.x ? params.x : this.x) || 0;
+        this.y = (params.y ? params.y : this.y) || 0;
 
         return this;
     }
