@@ -17,12 +17,10 @@ class StaticSpriteRender extends AbstractRenderer {
             this.size = params.size || [100, 100];
         }
 
-        this.halfSize = Vector2d.MultiplyNumber(this.size, 0.5);
-
         this.rotation = 0;
 
         // Object <- renderer position.
-        this.position = [0,0];
+        this.position = params.position || [0,0];
     }
 
     draw (ctx, objLocation) {
@@ -33,13 +31,12 @@ class StaticSpriteRender extends AbstractRenderer {
 
         let v = Vector2d.add(objLocation, this.position);
 
-        // debugger;
-
-        ctx.save();
+        ctx.save()
         ctx.translate(v[0], v[1]);
         ctx.rotate(-this.rotation);
         ctx.drawImage(this.image, -halfSize[0], -halfSize[1], size[0], size[1]);
-        ctx.restore();
+        ctx.rotate(this.rotation);
+        ctx.translate(-v[0], -v[1]);
     }
 
     rotate(rad) {
@@ -48,6 +45,15 @@ class StaticSpriteRender extends AbstractRenderer {
 
     loadImage (name) {
         this.image = Images.getImage(name || '')
+    }
+
+    set size(s) {
+        this._size = s;
+        this.halfSize = Vector2d.MultiplyNumber(this.size, 0.5);
+    }
+
+    get size() {
+        return this._size;
     }
 }
 

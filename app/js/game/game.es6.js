@@ -13,12 +13,14 @@ class Game {
         Engine.ObjectFactory.register('test2', TestObject2);
 
         let test = Engine.ObjectFactory.spawn('test', {
-            x: 155,
-            y: 0
+            x: 100,
+            y: 0,
+            size: 30
         });
         let test_2 = Engine.ObjectFactory.spawn('test', {
             x: 0,
-            y: 75
+            y: 100,
+            size: 30
         });
 
         let test_3 = Engine.ObjectFactory.spawn('test', {
@@ -34,8 +36,8 @@ class Game {
         });
 
         let test2 = Engine.ObjectFactory.spawn('test2', {
-            x: 20,
-            y: 75,
+            x: 100,
+            y: 100,
             size: 50
         }, {
             layer: -10
@@ -43,15 +45,21 @@ class Game {
 
         Engine.Images.register('Background', {
             origin: [0, 0],
-            size: [800, 400],
+            size: [800, 600],
             url: 'assets/images/bg.png'
+        })
+
+        Engine.Images.register('Grid100', {
+            origin: [0, 0],
+            size: [800, 600],
+            url: 'assets/images/grid.png'
         })
 
         let bg = Engine.ObjectFactory.spawn('EStaticImageObject', {
             x: 0,
             y: 0,
-            size: [800, 400],
-            image: 'Background'
+            size: [800, 600],
+            image: 'Grid100'
         }, {
             layer: -999
         })

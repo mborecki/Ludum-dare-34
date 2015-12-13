@@ -4,15 +4,18 @@ import StaticSpriteRenderer from './../../engine/renderers/staticSpriteRenderer.
 class EStaticImageObject extends GameObject {
     constructor() {
         super();
-        this.addComponent(new StaticSpriteRenderer());
+        this.addComponent(new StaticSpriteRenderer({}));
     }
 
     updateParams (params = {}) {
         super.updateParams(params);
 
+        console.log('updateParams', params)
+
         if (typeof params.size !== "undefined") {
             this.size = params.size
             this.renderer.size = this.size;
+            this.renderer.position = [this.size[0] / 2, this.size[1] / 2];
         }
 
         if (params.image) {
