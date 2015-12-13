@@ -6,10 +6,10 @@ import Vector2d from './../helpers/vector2d.es6';
 let PI = Math.PI
 
 class StaticSpriteRender extends AbstractRenderer {
-    constructor(params) {
+    constructor(params = {}) {
         super(params);
 
-        this.image = Images.getImage(params.image)
+        this.image = Images.getImage(params.image || '')
 
         if (typeof params.size === "number") {
             this.size = [params.size, params.size];
@@ -26,6 +26,8 @@ class StaticSpriteRender extends AbstractRenderer {
     }
 
     draw (ctx, objLocation) {
+        if (!this.image) return;
+
         let halfSize = this.halfSize;
         let size = this.size;
 
@@ -42,6 +44,10 @@ class StaticSpriteRender extends AbstractRenderer {
 
     rotate(rad) {
         this.rotation = (this.rotation + rad) % (2*PI);
+    }
+
+    loadImage (name) {
+        this.image = Images.getImage(name || '')
     }
 }
 
