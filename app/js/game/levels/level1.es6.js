@@ -2,6 +2,7 @@ import Engine from './../../engine/engine.es6';
 import Level from './../../engine/level.es6';
 
 import Road from './../objects/road.es6';
+import Player from './../objects/player.es6';
 import CFG from './../config.es6.js';
 
 class Level1 extends Level {
@@ -10,6 +11,10 @@ class Level1 extends Level {
 
         this.acc = CFG.ACC //[px/s];
         this.maxSpeed = CFG.MAX_SPEED;
+
+        this.playerYpos = 530;
+        this.playerXpos = [110];
+        this.playerPosIndex = 0
     }
 
     start () {
@@ -25,6 +30,12 @@ class Level1 extends Level {
         });
 
         this.road = Engine.ObjectFactory.spawn('Road');
+        this.player = Engine.ObjectFactory.spawn('Player', {
+            x: this.playerXpos[this.playerPosIndex],
+            y: this.playerYpos
+        }, {
+            layer: 100
+        });
     }
 
     update(dt) {

@@ -32,7 +32,7 @@ class Game {
         Engine.Images.register('MainScreen', {
             origin: [0, 0],
             size: [800, 600],
-            url: 'assets/images/MainScreen.png'
+            url: 'assets/images/mainScreen.png'
         });
     }
 

@@ -101,6 +101,10 @@ class Road extends GameObject {
         }, {
             layer: this.layer++
         });
+
+        if (this.layer > 20) {
+            this.layer = 10;
+        }
         this.tiles.push(tile)
     }
 
