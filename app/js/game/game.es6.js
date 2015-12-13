@@ -2,6 +2,7 @@ import Engine from './../engine/engine.es6';
 
 import MainMenu from './levels/menu.es6';
 import TestLevel from './levels/test.es6';
+import Level1 from './levels/level1.es6';
 
 class Game {
     constructor (cfg) {
@@ -27,11 +28,18 @@ class Game {
             size: [800, 600],
             url: 'assets/images/grid.png'
         });
+
+        Engine.Images.register('MainScreen', {
+            origin: [0, 0],
+            size: [800, 600],
+            url: 'assets/images/MainScreen.png'
+        });
     }
 
     initLevels () {
         Engine.addLevel('MainMenu', new MainMenu());
         Engine.addLevel('Test', new TestLevel());
+        Engine.addLevel('Level1', new Level1());
         Engine.runLevel('MainMenu');
     }
 }

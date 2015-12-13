@@ -9,12 +9,6 @@ class TestObject extends GameObject {
     constructor () {
         super();
 
-        Images.register('TestObjectStaticSprite', {
-            url: 'assets/images/sample.png',
-            origin: [0, 0],
-            size: [50, 50]
-        });
-
         this.addComponent(new StaticSpriteRenderer({
             size: 50,
             image: 'TestObjectStaticSprite'
@@ -24,5 +18,12 @@ class TestObject extends GameObject {
         this.addComponent(new Move());
     }
 }
+
+
+Images.register('TestObjectStaticSprite', {
+    url: 'assets/images/sample.png',
+    origin: [0, 0],
+    size: [50, 50]
+});
 
 export default TestObject;

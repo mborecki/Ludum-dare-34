@@ -6,6 +6,8 @@ class Images {
     }
 
     register (name, params) {
+        if (typeof this.images[name] !== "undefined") console.warn(`Repeat image name: ${name}`)
+
         let img = new Image();
         img.width = params.size[0];
         img.height = params.size[1];
@@ -20,10 +22,6 @@ class Images {
         }
 
         img.src = params.url;
-
-
-
-        console.log(img);
     }
 
     getImage (name) {

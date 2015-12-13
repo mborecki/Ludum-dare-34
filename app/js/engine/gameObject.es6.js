@@ -90,7 +90,6 @@ class GameObject {
     }
 
     addRenderer (renderer) {
-        console.log('addRenderer', renderer)
         this.draw = (ctx) => renderer.draw(ctx, this.location);
         this.renderer = renderer;
     }

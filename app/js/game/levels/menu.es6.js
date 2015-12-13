@@ -30,11 +30,12 @@ class MainMenu extends Level {
 
         if (Engine.Input.down('button_1')) {
             console.log('PLAY!');
-            Engine.runLevel('Test');
+            Engine.runLevel('Level1');
         }
 
         if (Engine.Input.down('button_2')) {
             console.log('INFO!');
+            Engine.runLevel('Test');
         }
     }
 }
