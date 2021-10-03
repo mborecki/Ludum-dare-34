@@ -1,5 +1,3 @@
-Game for Ludum Dare 34.
+# Our autopilot is somewhat unstable...
 
-Theme: Two button controls
-
-Latest milestone preview: http://mborecki.pl/ld34/index.html
+Game for Ludum dare 49.
